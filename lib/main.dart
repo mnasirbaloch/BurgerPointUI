@@ -315,9 +315,9 @@ Drawer createHomeDrawer() {
           () {},
         ),
         const SizedBox(
-            // height: 50,
-            // width: 100,
-            ),
+          height: 50,
+          // width: 100,
+        ),
         Flexible(
           flex: 2,
           child: Container(
