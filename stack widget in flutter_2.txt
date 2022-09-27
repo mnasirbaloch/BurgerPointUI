@@ -1,0 +1,186 @@
+import 'package:flutter/material.dart';
+
+void main(List<String> args) {
+  runApp(
+    const MaterialApp(debugShowCheckedModeBanner: false, home: Home()),
+  );
+}
+
+class Home extends StatelessWidget {
+  static const String flutterIntro =
+      '''Flutter transforms the app development process. Build, test, and deploy beautiful mobile, web, desktop, and embedded apps from a single codebase.''';
+  const Home({super.key});
+  static const double rightPositioned = 0;
+  static const double bottomPositionedDefault = 160;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: const Text("Flutter Stack Demo"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: Stack(
+        children: [
+          Positioned(
+            right: rightPositioned,
+            bottom: bottomPositionedDefault,
+            child: createContainer(
+              Colors.blue,
+            ),
+          ),
+          Positioned(
+            right: rightPositioned,
+            bottom: bottomPositionedDefault + 40,
+            child: createContainer(
+              Colors.teal,
+            ),
+          ),
+          Positioned(
+            right: rightPositioned,
+            bottom: bottomPositionedDefault + 80,
+            child: createContainer(
+              Colors.green,
+            ),
+          ),
+          Positioned(
+            right: rightPositioned,
+            bottom: bottomPositionedDefault + 120,
+            child: createContainer(
+              const Color.fromARGB(
+                255,
+                185,
+                153,
+                56,
+              ),
+            ),
+          ),
+          Positioned(
+            right: rightPositioned,
+            bottom: bottomPositionedDefault + 160,
+            child: createContainer(
+              Colors.red,
+            ),
+          ),
+          Positioned(
+            right: rightPositioned,
+            bottom: bottomPositionedDefault + 200,
+            child: createContainer(
+              Colors.pink,
+            ),
+          ),
+          Positioned(
+            right: rightPositioned,
+            bottom: bottomPositionedDefault + 240,
+            child: createContainer(
+              Colors.orange,
+            ),
+          ),
+          const Positioned(
+            top: 140,
+            left: 10,
+            child: Text(
+              "Welcome to\nFlutter.",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          const Positioned(
+            top: 230,
+            left: 10,
+            width: 180,
+            child: Text(
+              flutterIntro,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.white,
+                wordSpacing: 3,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 360,
+            left: 10,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // createItemWidget(
+                //   "Composition",
+                //   const Color(
+                //     0XFFA62349,
+                //   ),
+                // ),
+                createItemWidget("Building Widgets", Colors.orange),
+                createItemWidget("Widget State", Colors.pink),
+                createItemWidget("State Managment", Colors.red),
+                createItemWidget(
+                  "Rendering",
+                  const Color.fromARGB(
+                    255,
+                    185,
+                    153,
+                    56,
+                  ),
+                ),
+                createItemWidget("Widget State", Colors.green),
+                createItemWidget("State Managment", Colors.teal),
+                createItemWidget("Rendering Layout", Colors.blue),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget createContainer(Color color) {
+    return Container(
+      width: 80,
+      height: 80,
+      transform: Matrix4.rotationZ(1),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(50),
+          topRight: Radius.circular(50),
+          // bottomRight: Radius.circular(50),
+          // topLeft: Radius.circular(50),
+        ),
+      ),
+    );
+  }
+
+  Widget createItemWidget(String itemTitle, Color color) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(
+            bottom: 5,
+            top: 5,
+          ),
+          width: 6,
+          height: 20,
+          color: color,
+        ),
+        const SizedBox(
+          width: 8,
+          height: 25,
+        ),
+        Text(
+          itemTitle,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+}
